@@ -1,0 +1,16 @@
+/* print styles */
+@media print {
+  #tcanvas,
+  .n-print {
+    display: none !important;
+  }
+  #line-header thead th {
+    border-right: 1px solid #000 !important;
+    border-left: 1px solid #000 !important;
+  }
+  tbody tr th,
+  tbody tr td {
+    border: 1px solid #000 !important;
+    background: #fff !important;
+  }
+}

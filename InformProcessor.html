@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inform Procesor</title>
+    <!-- 	Bootstrap	 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <div class="card text-center">
+        <div class="card-header">Procesar Informacion</div>
+        <div class="card-body">
+          <h5 class="card-title">Agregar CSV</h5>
+          <div class="container d-flex flex-column">
+            <label
+              >Agregar Informes (separar por filas en formato categoria
+              localidad respuesta respuesta etc):</label
+            >
+            <textarea id="data" rows="10" cols="50">
+Adultos Femenino	Acapulco	226	32	24	32					116	4	0	0</textarea
+            >
+          </div>
+          <a class="btn btn-primary mt-4" onclick="facade()">Procesar</a>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <p class="card-title">Respuestas.</p>
+          <div id="tcanvas" style="overflow-x: scroll"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const localidades = [
+      "Acapulco",
+      "Campeche",
+      "Cancún",
+      "Chetumal",
+      "Costa Rica",
+      "Cotija",
+      "Cozumel",
+      "Cuernavaca",
+      "Córdoba",
+      "El Salvador",
+      "Guatemala",
+      "Lindavista",
+      "Morelia",
+      "Mérida",
+      "México Norte",
+      "México Poniente",
+      "México Sur",
+      "Oaxaca",
+      "Orizaba",
+      "Pachuca",
+      "Playa del Carmen",
+      "Puebla",
+      "Querétaro",
+      "Tapachula",
+      "Toluca",
+      "Tuxtla Gutiérrez",
+      "Veracruz",
+      "Villahermosa",
+      "Xalapa",
+    ];
+    const secciones = [
+      "Adultos Femenino",
+      "Adultos Masculino",
+      "Jóvenes Femenino",
+      "Jóvenes Masculino",
+      "ECYD Femenino",
+      "ECYD Masculino",
+    ];
+    let arrInfo = [];
+    let respuestas = [];
+
+    function createArr() {
+      data = document.getElementById("data").value;
+      arrInfo = [];
+      const iterator = data.split("\n");
+      for (let i = 0; i < iterator.length; i++) {
+        let row = iterator[i].split("\t");
+        let element = [
+          row[1],
+          row[0],
+          parseInt(row[2]),
+          parseInt(row[3]),
+          parseInt(row[4]),
+          parseInt(row[5]),
+          parseInt(row[6]),
+          parseInt(row[7]),
+          parseInt(row[8]),
+          parseInt(row[9]),
+          parseInt(row[10]),
+          parseInt(row[11]),
+          parseInt(row[12]),
+          parseInt(row[13]),
+        ];
+        arrInfo.push(element);
+      }
+    }
+
+    function createRespuestas() {
+      respuestas = [];
+      for (let i = 0; i < localidades.length; i++) {
+        let obj = {
+          "Adultos Femenino": [],
+          "Adultos Masculino": [],
+          "Jóvenes Femenino": [],
+          "Jóvenes Masculino": [],
+          "ECYD Femenino": [],
+          "ECYD Masculino": [],
+        };
+        const arrLocalidad = arrInfo.filter((row) => row[0] === localidades[i]);
+        arrLocalidad.forEach(
+          (element) => (obj[element[1]] = element.slice(2, 14))
+        );
+        let respuesta = [
+          localidades[i],
+          obj["ECYD Femenino"][0],
+          obj["ECYD Masculino"][0],
+          obj["Adultos Femenino"][0],
+          obj["Adultos Masculino"][0],
+          obj["Jóvenes Femenino"][0],
+          obj["Jóvenes Masculino"][0],
+          obj["ECYD Femenino"][1],
+          obj["ECYD Masculino"][1],
+          obj["Adultos Femenino"][1],
+          obj["Adultos Masculino"][1],
+          obj["Jóvenes Femenino"][1],
+          obj["Jóvenes Masculino"][1],
+          obj["ECYD Femenino"][2],
+          obj["ECYD Masculino"][2],
+          obj["Adultos Femenino"][2],
+          obj["Adultos Masculino"][2],
+          obj["Jóvenes Femenino"][2],
+          obj["Jóvenes Masculino"][2],
+          (obj["ECYD Femenino"][3] ?? 0) + (obj["ECYD Femenino"][4] ?? 0),
+          (obj["ECYD Masculino"][3] ?? 0) + (obj["ECYD Masculino"][4] ?? 0),
+          obj["Adultos Femenino"][3],
+          obj["Adultos Masculino"][3],
+          obj["Jóvenes Femenino"][3],
+          obj["Jóvenes Masculino"][3],
+          obj["ECYD Femenino"][5],
+          obj["ECYD Masculino"][5],
+          obj["Jóvenes Femenino"][5],
+          obj["Jóvenes Masculino"][5],
+          (obj["ECYD Femenino"][6] ?? 0) + (obj["Jóvenes Femenino"][6] ?? 0),
+          (obj["ECYD Masculino"][6] ?? 0) + (obj["Jóvenes Masculino"][6] ?? 0),
+          (obj["ECYD Femenino"][7] ?? 0) + (obj["Jóvenes Femenino"][7] ?? 0),
+          (obj["ECYD Masculino"][7] ?? 0) + (obj["Jóvenes Masculino"][7] ?? 0),
+          (obj["Adultos Femenino"][8] ?? 0) + (obj["Jóvenes Femenino"][8] ?? 0),
+          (obj["Adultos Masculino"][8] ?? 0) +
+            (obj["Jóvenes Masculino"][8] ?? 0),
+          obj["Adultos Femenino"][9],
+          obj["Adultos Masculino"][9],
+          "-",
+          (obj["Adultos Femenino"][10] ?? 0) +
+            (obj["Adultos Masculino"][10] ?? 0),
+          obj["Adultos Femenino"][11],
+          obj["Adultos Masculino"][11],
+        ];
+        respuestas.push(respuesta);
+      }
+    }
+
+    function createTable(tableData) {
+      borrar = document.getElementById("rtable");
+      if (borrar) borrar.remove();
+      var table = document.createElement("table");
+      table.setAttribute("id", "rtable");
+      table.className = "table table-striped";
+      var tableBody = document.createElement("tbody");
+
+      tableData.forEach(function (rowData) {
+        var row = document.createElement("tr");
+        rowData.forEach(function (cellData) {
+          var cell = document.createElement("td");
+          cell.appendChild(document.createTextNode(cellData));
+          row.appendChild(cell);
+        });
+        tableBody.appendChild(row);
+      });
+
+      table.appendChild(tableBody);
+      document.getElementById("tcanvas").appendChild(table);
+    }
+
+    function facade() {
+      createArr();
+      createRespuestas();
+      createTable(respuestas);
+    }
+  </script>
+</html>
