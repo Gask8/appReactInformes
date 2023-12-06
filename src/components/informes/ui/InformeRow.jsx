@@ -12,7 +12,6 @@ function InformeRow({ informe }) {
     eq_jm,
     eqm_f,
     eqm_m,
-    fecha,
     form_af,
     form_am,
     form_ef,
@@ -41,7 +40,7 @@ function InformeRow({ informe }) {
     prom_f,
     prom_m,
     sac_dic,
-    trimestre,
+    Batch: { trimestre, fecha },
   } = informe;
 
   const iterator = [

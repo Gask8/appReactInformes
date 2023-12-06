@@ -15,7 +15,9 @@ const GridE = styled.div`
 `;
 
 function ReportGraphs({ informes }) {
-  const labels = informes.map((i) => `${i.trimestre} - ${i.fecha}`).reverse();
+  const labels = informes
+    .map((i) => `${i.Batch.trimestre} - ${i.Batch.fecha}`)
+    .reverse();
   let itarator = [
     {
       title: "Miembros Asociados ECYD",

@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { createManyInforms } from "../../services/apiInformes";
 import { processInfo } from "../../utils/helper";
-import { dataHeader } from "../../utils/dataArray";
 
 import ProcesadorThead from "./ProcesadorThead";
+import { makeInserts } from "./apiProcesador";
 
 function Procesador() {
   const [data, setData] = useState("Adultos Femenino	Acapulco	226	32	24	32					116	4	0	0");
@@ -18,22 +17,7 @@ function Procesador() {
   }
 
   async function handleSave() {
-    try {
-      let inserts = [];
-      let send = resp;
-      send.forEach((e) => {
-        e.forEach((f, i) => {
-          if (f === undefined) e[i] = 0;
-        });
-      });
-      //send.unshift(dataHeader);
-      send.forEach((e) => {
-        inserts.push(e.reduce((a, v, i) => ({ ...a, [dataHeader[i]]: v }), {}));
-      });
-      createManyInforms(inserts);
-    } catch (err) {
-      console.error(err);
-    }
+    makeInserts(resp);
   }
 
   return (

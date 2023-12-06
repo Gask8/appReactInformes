@@ -1,16 +1,5 @@
 import { localidades, traductorSecciones as traductor } from "./dataArray";
 
-function getCurrentTrimestre() {
-  const month = new Date().getMonth();
-  if (month <= 2) return "Octubre-Diciembre";
-  if (month <= 5) return "Enero-Marzo";
-  if (month <= 8) return "Abril-Junio";
-  return "Julio-Septiembre";
-}
-function getCurrentYear() {
-  return new Date().getFullYear().toString();
-}
-
 export function processInfo(data) {
   const arrInfo = createArr(data);
   return createRespuestas(arrInfo);
@@ -53,8 +42,6 @@ export function processInfo(data) {
         "ECYD Masculino": [],
       };
       const arrLocalidad = arrInfo.filter((row) => row[0] === localidades[i]);
-      var yr = getCurrentYear();
-      var trim = getCurrentTrimestre();
       let respSec = "";
       arrLocalidad.forEach(function (element) {
         obj[element[1]] = element.slice(2, 14);
@@ -104,11 +91,14 @@ export function processInfo(data) {
         (obj["Adultos Femenino"][10] ?? 0) +
           (obj["Adultos Masculino"][10] ?? 0),
         respSec,
-        yr,
-        trim,
       ];
       respuestas.push(respuesta);
     }
     return respuestas;
   }
+}
+
+export function makeSimpleInserts(data) {
+  const respuestas = [];
+  return respuestas;
 }

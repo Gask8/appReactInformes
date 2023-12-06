@@ -16,7 +16,6 @@ function ReportInfo({ informe }) {
     eq_jm,
     eqm_f,
     eqm_m,
-    fecha,
     form_af,
     form_am,
     form_ef,
@@ -45,8 +44,8 @@ function ReportInfo({ informe }) {
     prom_f,
     prom_m,
     sac_dic,
-    trimestre,
     sec_resp = "",
+    Batch: { trimestre, fecha },
   } = informe;
 
   const iterator = [

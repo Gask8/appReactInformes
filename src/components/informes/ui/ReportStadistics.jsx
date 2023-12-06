@@ -22,9 +22,11 @@ const Hr = styled.hr`
 `;
 
 function ReportStadistics({ informes }) {
-  const { trimestre } = informes[0];
+  const {
+    Batch: { trimestre },
+  } = informes[0];
   const estadisticasPorAno = informes
-    .filter((informe) => informe.trimestre === trimestre)
+    .filter((informe) => informe.Batch.trimestre === trimestre)
     .reverse();
 
   return (
@@ -49,7 +51,7 @@ function ElementStafistics({ i }) {
 
   return (
     <DivF>
-      <h6>{i.fecha}</h6>
+      <h6>{i.Batch.fecha}</h6>
       <Hr />
       <p>
         Miembros Asociados: {""}
