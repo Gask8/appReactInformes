@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { getInforms } from "../../services/apiInformes";
 import { Loader } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
-import InformeRow from "./ui/InformeRow";
-import InformeThead from "./ui/InformeThead";
+import InformeRow from "../informes/ui/InformeRow";
+import InformeThead from "../informes/ui/InformeThead";
 import SearachBar from "../../ui/SearchBar";
 import Select from "../../ui/Select";
 

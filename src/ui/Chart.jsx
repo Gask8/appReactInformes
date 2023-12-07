@@ -61,7 +61,7 @@ function Chart({ data1, data2, labels, title }) {
     },
   };
 
-  return <Line options={options} data={prepare} />;
+  return <Line id="canvasChart" options={options} data={prepare} />;
 }
 
 export default Chart;

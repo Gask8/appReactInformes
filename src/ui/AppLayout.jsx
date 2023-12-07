@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Outlet } from "react-router-dom";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -20,10 +21,10 @@ const Header = styled.header`
   justify-content: space-around;
 `;
 
-function AppLayout({ setMenu, children }) {
+function AppLayout() {
   return (
     <StyledAppLayout>
-      <Header className="n-print">
+      {/* <Header className="n-print">
         <button
           className="btn btn-outline-secondary btn-sm"
           onClick={() => setMenu(0)}
@@ -42,8 +43,10 @@ function AppLayout({ setMenu, children }) {
         >
           Por Localidad
         </button>
-      </Header>
-      <Main>{children}</Main>
+      </Header> */}
+      <Main>
+        <Outlet />
+      </Main>
     </StyledAppLayout>
   );
 }

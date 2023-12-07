@@ -63,16 +63,16 @@ function InformReport({ searchLocality }) {
     return <Loader size="md" content="Cargando" />;
   return (
     <div className="card-body">
-      <p className="card-title">Reporte por Localidad:</p>
       {searchLocality !== "" && (
         <>
-          <ReporTable informes={informes} />
           <ReportTemplate>
             <ReportInfo informe={informes[0]} />
             <ReportStadistics informes={informes} />
             {searchLocality === "Territorial" && <ReportGeneralGraphs />}
             <ReportGraphs informes={informes} />
           </ReportTemplate>
+          {/* <p className="card-title">Archivo Historico:</p>
+          <ReporTable informes={informes} /> */}
         </>
       )}
     </div>

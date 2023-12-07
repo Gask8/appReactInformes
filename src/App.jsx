@@ -1,21 +1,28 @@
-import Procesador from "./components/procesador/Procesador";
-import Informes from "./components/informes/Informes";
-import InformesbyL from "./components/informes/InformesbyL";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 import AppLayout from "./ui/AppLayout";
+import Procesador from "./components/procesador/Procesador";
+import Reporte from "./components/reportes/Reporte";
 import GlobalStyles from "./styles/GlobalStyles";
-import { useState } from "react";
 
 function App() {
-  const [menu, setMenu] = useState(0);
-
   return (
     <>
       <GlobalStyles />
-      <AppLayout setMenu={setMenu}>
-        {menu === 0 && <Procesador />}
-        {menu === 1 && <Informes />}
-        {menu === 2 && <InformesbyL />}
-      </AppLayout>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route index element={<Navigate replace to="procesador" />} />
+            <Route path="procesador" element={<Procesador />} />
+
+            <Route
+              path="analisis"
+              element={<Navigate replace to="/analisis/Territorial" />}
+            />
+            <Route path="analisis/:idLocalidad" element={<Reporte />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
