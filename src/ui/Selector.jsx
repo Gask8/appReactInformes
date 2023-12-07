@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
@@ -25,8 +26,11 @@ function SelectBase({ options, value, onChange, ...props }) {
   );
 }
 
-function LocalitySelector({ options, setValue, value }) {
+function LocalitySelector({ options, setValue }) {
+  const [searchParams, setSearchParams] = useState("");
+
   function handleChange(e) {
+    setSearchParams(e.target.value);
     setValue(e.target.value);
   }
 
@@ -36,7 +40,7 @@ function LocalitySelector({ options, setValue, value }) {
         options={options}
         type="white"
         onChange={handleChange}
-        value={value}
+        value={searchParams}
       ></SelectBase>
     </div>
   );

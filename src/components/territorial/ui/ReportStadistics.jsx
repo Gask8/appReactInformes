@@ -30,11 +30,14 @@ function ReportStadistics({ informes }) {
     .reverse();
 
   return (
-    <DivG>
-      {estadisticasPorAno.map((i, ind) => (
-        <ElementStafistics key={ind} i={i} />
-      ))}
-    </DivG>
+    <div>
+      <h4>Estadísticas comparativas entre años, mismo trimestre.</h4>
+      <DivG>
+        {estadisticasPorAno.map((i, ind) => (
+          <ElementStafistics key={ind} i={i} />
+        ))}
+      </DivG>
+    </div>
   );
 }
 

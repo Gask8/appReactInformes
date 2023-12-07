@@ -14,7 +14,7 @@ import { Pie } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 import { Loader } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
-import { getLastInforms } from "../../../services/apiInformes";
+import { getLastInforms } from "../../../services/apiReportes";
 import { nombreSecciones } from "../../../utils/dataArray";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 

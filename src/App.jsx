@@ -4,6 +4,8 @@ import AppLayout from "./ui/AppLayout";
 import Procesador from "./components/procesador/Procesador";
 import Reporte from "./components/reportes/Reporte";
 import GlobalStyles from "./styles/GlobalStyles";
+import Home from "./components/Home";
+import Error from "./components/Error";
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="procesador" />} />
+            <Route path="/" element={<Home />} />
             <Route path="procesador" element={<Procesador />} />
 
             <Route
@@ -21,6 +23,8 @@ function App() {
             />
             <Route path="analisis/:idLocalidad" element={<Reporte />} />
           </Route>
+
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </>

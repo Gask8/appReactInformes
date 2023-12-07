@@ -1,8 +1,8 @@
 import { dataHeader } from "../../utils/dataArray";
-import { createManyInforms } from "../../services/apiInformes";
+import { createManyInforms } from "../../services/apiReportes";
 import { createBatch } from "../../services/apiBatch";
 
-export async function makeInserts(info, processInfo) {
+export async function makeInserts(processInfo) {
   try {
     const newBatch = await createBatch();
     const idBatch = newBatch[0].id;
@@ -10,6 +10,7 @@ export async function makeInserts(info, processInfo) {
     alert("Informes cargados correctamente");
   } catch (err) {
     console.error(err);
+    alert("No se Cargo la Informacion");
   }
 }
 

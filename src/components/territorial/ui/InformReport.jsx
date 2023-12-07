@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {
   getLocalityInforms,
   getGeneralInfo,
-} from "../../../services/apiInformes";
+} from "../../../services/apiReportes";
 import { Loader } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import ReporTable from "./ReportTable";

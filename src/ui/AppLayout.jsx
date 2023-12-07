@@ -4,13 +4,12 @@ import { Outlet } from "react-router-dom";
 const StyledAppLayout = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
-  height: 100vh;
 `;
 
 const Main = styled.main`
   background-color: var(--color-grey-50);
   padding: 1rem 1.8rem 4.4rem;
-  overflow: scroll;
+  height: 100vh;
 `;
 
 const Header = styled.header`
