@@ -4,10 +4,12 @@ import { useReportsData } from "./hooks/useReportsData";
 
 import { Loader } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
-import LocalitySelector from "../../ui/LocalitySelector";
 import { traductorAbrebiaciones } from "../../utils/dataArray";
+import LocalitySelector from "../../ui/LocalitySelector";
 import ReportLayout from "./ui/ReportLayout";
 import Informe from "../informes/Informe";
+import ModalButton from "../../ui/ModalButton";
+import ModalAnalisis from "../analisis/ModalAnalisis";
 
 function Reporte() {
   const { idLocalidad: searchLocality } = useParams();
@@ -28,34 +30,38 @@ function Reporte() {
     .map((x) => traductorAbrebiaciones[x]);
 
   return (
-    <div className="card m-4">
-      <div className="card-header n-print">
-        <div className="d-flex justify-content-end">
-          <p>{`${fecha} / ${trimestre}`}</p>
+    <>
+      <ModalButton />
+      <div className="card m-4">
+        <div className="card-header n-print">
+          <div className="d-flex justify-content-end">
+            <p>{`${fecha} / ${trimestre}`}</p>
+          </div>
+          <div className="d-flex justify-content-center">
+            <LocalitySelector
+              options={["General", ...secciones]}
+              setValue={setSeccion}
+              value={seccion}
+            />
+          </div>
         </div>
-        <div className="d-flex justify-content-center">
-          <LocalitySelector
-            options={["General", ...secciones]}
-            setValue={setSeccion}
-            value={seccion}
-          />
-        </div>
-      </div>
 
-      <div className="card-body">
-        {seccion === "General" ? (
-          <ReportLayout informes={informes} />
-        ) : (
-          <Informe
-            options={{
-              id: id_batch,
-              seccion: seccion,
-              localidad: searchLocality,
-            }}
-          />
-        )}
+        <div className="card-body">
+          {seccion === "General" ? (
+            <ReportLayout informes={informes} />
+          ) : (
+            <Informe
+              options={{
+                id: id_batch,
+                seccion: seccion,
+                localidad: searchLocality,
+              }}
+            />
+          )}
+        </div>
       </div>
-    </div>
+      <ModalAnalisis id_inform={informes[0].id} />
+    </>
   );
 }
 
