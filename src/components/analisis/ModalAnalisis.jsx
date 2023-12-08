@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { getAnalisis, updateAnalisis } from "../../services/apiAnalisis";
+import { updateAnalisis } from "../../services/apiAnalisis";
 import { useRetriveAnalisis } from "./hooks/useAnalisis";
 import toast from "react-hot-toast";
 
