@@ -18,3 +18,17 @@ export async function getBatchInforms(options) {
 
   return data;
 }
+
+export async function getHowManyInforms(id_batch) {
+  const { data, error } = await supabase
+    .from("Individual_Inform")
+    .select("localidad, seccion")
+    .eq("id_batch", id_batch);
+
+  if (error) {
+    console.error(error);
+    throw new Error("No se pudo cargar la informacion");
+  }
+
+  return data;
+}

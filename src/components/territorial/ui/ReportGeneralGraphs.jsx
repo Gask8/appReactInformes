@@ -17,6 +17,7 @@ import "rsuite/dist/rsuite.min.css";
 import { getLastInforms } from "../../../services/apiReportes";
 import { nombreSecciones } from "../../../utils/dataArray";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import Accordion from "../../../ui/Accordion";
 
 ChartJS.register(
   CategoryScale,
@@ -100,10 +101,6 @@ function ReportGeneralGraph() {
       // legend: {
       //   position: "right",
       // },
-      title: {
-        display: true,
-        text: "MIEMBROS POR LOCALIDAD",
-      },
     },
   };
 
@@ -146,16 +143,13 @@ function ReportGeneralGraph() {
 
   const optionsPie = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       datalabels: {
         labels: {},
       },
       legend: {
         position: "right",
-      },
-      title: {
-        display: true,
-        text: "Composicion Territorial de Miembros Asociados",
       },
     },
   };
@@ -190,14 +184,26 @@ function ReportGeneralGraph() {
   if (isLoading) return <Loader center size="md" content="Cargando" />;
 
   return (
-    <div>
-      <div style={{ margin: " 0 10%", height: "1000px" }}>
-        <Bar options={optionsBar} data={dataBar} />
-      </div>
-      <div style={{ margin: " 10px 30% 0" }}>
-        <Pie options={optionsPie} data={dataPie} />
-      </div>
-    </div>
+    <Accordion id="accordion-graphs">
+      <Accordion.Item idName="bar">
+        <Accordion.Header>Miembros por Localidad</Accordion.Header>
+        <Accordion.Content>
+          <div style={{ margin: " 0 10%", height: "1000px" }}>
+            <Bar options={optionsBar} data={dataBar} />
+          </div>
+        </Accordion.Content>
+      </Accordion.Item>
+      <Accordion.Item idName="pie">
+        <Accordion.Header>
+          Composicion Local de Todos los Miembros
+        </Accordion.Header>
+        <Accordion.Content>
+          <div style={{ margin: "20px 25%" }}>
+            <Pie options={optionsPie} data={dataPie} />
+          </div>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
   );
 }
 

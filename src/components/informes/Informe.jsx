@@ -53,21 +53,15 @@ las secciones por medio de la plataforma somosrc.net.`}
         </pre>
       </div>
       <Container>
-        <h4>Información Cuantitativa</h4>
-        <Accordion id="accordion-inform1">
+        <Accordion id="accordion-inform">
           <Accordion.Item idName="cuantitativo">
-            <Accordion.Header>Tabla</Accordion.Header>
+            <Accordion.Header>Información Cuantitativa</Accordion.Header>
             <Accordion.Content>
               <TableCuant informe={informe} />
             </Accordion.Content>
           </Accordion.Item>
-        </Accordion>
-      </Container>
-      <Container>
-        <h4>Información Cualitativo</h4>
-        <Accordion id="accordion-inform2">
           <Accordion.Item idName="cualitativo">
-            <Accordion.Header>Tabla</Accordion.Header>
+            <Accordion.Header>Información Cualitativo</Accordion.Header>
             <Accordion.Content>
               <TableCuanl informe={informe} />
             </Accordion.Content>
