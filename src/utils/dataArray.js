@@ -44,6 +44,32 @@ export const dataHeader = [
   "trimestre",
 ];
 
+export const dataHeaderInforms = [
+  "seccion",
+  "localidad",
+  "ma",
+  "mna",
+  "eq",
+  "form",
+  "formn",
+  "paso",
+  "colab",
+  "disc",
+  "prom",
+  "mis",
+  "sac_dic",
+  "eqm",
+  "vida_de_seccion",
+  "formacion_formadores",
+  "pastoral_vocacional",
+  "apostoles_jovenes",
+  "matrimonios_apostoles",
+  "afavor_de_la_vida",
+  "otro_campo_prioritario",
+  "acciones_y_metas",
+  "comentarios",
+];
+
 export const localidades = [
   "Acapulco",
   "Campeche",

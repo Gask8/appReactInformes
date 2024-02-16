@@ -32,3 +32,30 @@ export async function getHowManyInforms(id_batch) {
 
   return data;
 }
+
+export async function createManyInforms(newInforms) {
+  const { data, error } = await supabase
+    .from("Individual_Inform")
+    .insert(newInforms);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Error al subir la informacion");
+  }
+
+  return data;
+}
+
+export async function deleteManyInforms(id) {
+  const { data, error } = await supabase
+    .from("Individual_Inform")
+    .delete()
+    .eq("id_batch", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Error al subir la informacion");
+  }
+
+  return data;
+}

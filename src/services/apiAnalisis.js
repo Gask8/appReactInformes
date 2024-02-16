@@ -5,13 +5,21 @@ export async function getAnalisis(id_report) {
     .from("Analisis")
     .select("*")
     .eq("id_report", id_report)
+    .limit(1)
     .single();
+
+  console.log(data, error);
 
   if (error) {
     console.error(error);
     if (error.code === "PGRST116") {
-      await createAnalisis({ id_report: id_report, analisis: "", accion: "" });
+      const data2 = await createAnalisis({
+        id_report: id_report,
+        analisis: "",
+        accion: "",
+      });
       console.log("creando analisis");
+      return data2[0];
     } else {
       console.error(error.code);
       throw new Error("No se pudo cargar la informacion");
@@ -21,7 +29,10 @@ export async function getAnalisis(id_report) {
 }
 
 export async function createAnalisis(newAnalisis) {
-  const { data, error } = await supabase.from("Analisis").insert(newAnalisis);
+  const { data, error } = await supabase
+    .from("Analisis")
+    .insert(newAnalisis)
+    .select();
 
   if (error) {
     console.error(error);

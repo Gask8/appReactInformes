@@ -7,6 +7,37 @@ import { makeInserts } from "./apiProcesador";
 function Procesador() {
   const [data, setData] = useState("Adultos Femenino	Acapulco	226	32	24	32					116	4	0	0");
   const [resp, setResp] = useState([]);
+  const [file, setFile] = useState();
+  const [fileData, setFileData] = useState([]);
+
+  const handleFileChange = (e) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleUploadClick = async () => {
+    if (!file) {
+      return;
+    }
+    await file
+      .text()
+      .then((text) => {
+        let lines = text.split("\n");
+        let fileData = [];
+        for (let i = 1; i < lines.length; i++) {
+          fileData.push(lines[i].split("\t"));
+        }
+        setFileData(fileData);
+
+        const data = fileData.reduce((acc, curr) => {
+          acc += curr.slice(0, 14).join("\t") + "\n";
+          return acc;
+        }, "");
+        setData(data);
+      })
+      .catch((err) => console.error(err));
+  };
 
   function handleChange(e) {
     setData(e.target.value);
@@ -17,7 +48,12 @@ function Procesador() {
   }
 
   async function handleSave() {
-    makeInserts(resp);
+    makeInserts(
+      resp,
+      fileData.filter((e) => {
+        return e.length > 1;
+      })
+    );
   }
 
   return (
@@ -28,6 +64,17 @@ function Procesador() {
           <div className="card-body">
             <h5 className="card-title">Agregar CSV</h5>
             <div className="container d-flex flex-column">
+              <div>
+                <input type="file" accept=".csv" onChange={handleFileChange} />
+                <div>{file && `${file.name} - ${file.type}`}</div>
+
+                <button
+                  className="btn btn-primary m-4"
+                  onClick={handleUploadClick}
+                >
+                  Subir
+                </button>
+              </div>
               <label>
                 Agregar Informes (separar por filas en formato categoria
                 localidad respuesta respuesta etc):

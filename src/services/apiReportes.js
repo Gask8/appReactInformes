@@ -1,15 +1,11 @@
 import supabase from "./supabase";
 
-export async function getInforms() {
+export async function getReports() {
   const { data, error } = await supabase
     .from("General_Report")
     .select("*, Batch(*)")
-    // .eq("id_batch", "14")
     .or("id_batch.eq.15,id_batch.eq.14")
     .order("id_batch", { ascending: false }, "localidad", { ascending: true });
-
-  // console.log(data);
-
   if (error) {
     console.error(error);
     throw new Error("No se pudo cargar la informacion");
@@ -18,7 +14,7 @@ export async function getInforms() {
   return data;
 }
 
-export async function getLastInforms() {
+export async function getLastReports() {
   const { data, error } = await supabase
     .from("General_Report")
     .select("*, Batch(*)")
@@ -33,7 +29,7 @@ export async function getLastInforms() {
   return data;
 }
 
-export async function getLocalityInforms(locality) {
+export async function getLocalityReports(locality) {
   const { data, error } = await supabase
     .from("General_Report")
     .select("*, Batch(*)")
@@ -62,10 +58,24 @@ export async function getGeneralInfo() {
   return data;
 }
 
-export async function createManyInforms(newInforms) {
+export async function createManyReports(newInforms) {
   const { data, error } = await supabase
     .from("General_Report")
     .insert(newInforms);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Error al subir la informacion");
+  }
+
+  return data;
+}
+
+export async function deleteManyReports(id) {
+  const { data, error } = await supabase
+    .from("General_Report")
+    .delete()
+    .eq("id_batch", id);
 
   if (error) {
     console.error(error);
