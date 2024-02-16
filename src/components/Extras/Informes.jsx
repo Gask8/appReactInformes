@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getInforms } from "../../services/apiInformes";
+import { getReports } from "../../services/apiInformes";
 import { Loader } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import InformeRow from "../informes/ui/InformeRow";
@@ -17,7 +17,7 @@ function Informes() {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const res = getInforms();
+        const res = getReports();
         res.then(
           function (data) {
             setInformes(data);

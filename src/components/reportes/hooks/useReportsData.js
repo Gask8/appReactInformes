@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getLocalityInforms } from "../../../services/apiReportes";
+import { getLocalityReports } from "../../../services/apiReportes";
 
 export function useReportsData(searchLocality, setInformes, setIsLoading) {
   useEffect(() => {
@@ -9,7 +9,7 @@ export function useReportsData(searchLocality, setInformes, setIsLoading) {
       // }
       try {
         setIsLoading(true);
-        const res = getLocalityInforms(searchLocality);
+        const res = getLocalityReports(searchLocality);
         res.then(
           function (data) {
             setInformes(data);

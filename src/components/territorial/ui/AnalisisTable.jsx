@@ -32,7 +32,7 @@ function AnalisisTable({ id_batch }) {
     a.General_Report.localidad.localeCompare(b.General_Report.localidad)
   );
 
-  console.log(sortedInformacion);
+  //console.log(sortedInformacion);
 
   if (isLoading | (informacion.length === 0)) return null;
 
@@ -57,7 +57,7 @@ function AnalisisTable({ id_batch }) {
             </tr>
           </thead>
           <tbody>
-            {informacion.map((e, i) => (
+            {sortedInformacion.map((e, i) => (
               <tr key={i}>
                 <td>{e.General_Report.localidad}</td>
                 <td>{e.analisis}</td>
