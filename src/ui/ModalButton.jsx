@@ -9,7 +9,7 @@ function ModalButton({ onClick }) {
       data-bs-toggle="modal"
       data-bs-target="#AnswerModal"
     >
-      Reporte de Analisis <HiOutlinePencilSquare />
+      Responder Analisis <br />y Acciones <HiOutlinePencilSquare />
     </button>
   );
 }

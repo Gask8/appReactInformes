@@ -59,7 +59,7 @@ function ModalAnalisis({ id_inform }) {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="AnswerModalLabel">
-              Reporte de Analisis y Accion
+              Responder Analisis y Acciones
             </h5>
             <button
               type="button"

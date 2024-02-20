@@ -24,6 +24,7 @@ export function processInfo(data) {
         parseInt(row[11]),
         parseInt(row[12]),
         parseInt(row[13]),
+        parseInt(row[14]),
       ];
       arrInfo.push(element);
     }
@@ -43,9 +44,12 @@ export function processInfo(data) {
       };
       const arrLocalidad = arrInfo.filter((row) => row[0] === localidades[i]);
       let respSec = "";
+
       arrLocalidad.forEach(function (element) {
         obj[element[1]] = element.slice(2, 14);
-        respSec += `${traductor[element[1]]},`;
+        if (element[14] === 1) {
+          respSec += `${traductor[element[1]]},`;
+        }
       });
 
       let respuesta = [

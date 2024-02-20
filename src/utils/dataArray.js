@@ -40,8 +40,6 @@ export const dataHeader = [
   "prom_m",
   "sac_dic",
   "sec_resp",
-  "fecha",
-  "trimestre",
 ];
 
 export const dataHeaderInforms = [

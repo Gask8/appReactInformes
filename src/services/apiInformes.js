@@ -9,6 +9,7 @@ export async function getBatchInforms(options) {
     .eq("seccion", seccion)
     .eq("id_batch", id)
     .eq("localidad", localidad)
+    .limit(1)
     .single();
 
   if (error) {

@@ -33,3 +33,12 @@ tbody tr td {
 body {
   white-space: pre-line;
 }
+
+#hr {
+  height: 2px;
+  width: 80%;
+  margin: 50px 0;
+  border-width: 0;
+  color: gray;
+  background-color: gray;
+}

@@ -15,13 +15,19 @@ const FlexDiv = styled.div`
   width: 90%;
 `;
 
-function ElementReportTable({ widthPorcentage, title, contents = [] }) {
+function ElementReportTable({
+  widthPorcentage,
+  title,
+  contents = [],
+  colorHeader,
+}) {
   return (
     <StyledElementDiv $widthporcentage={widthPorcentage} className="card">
       <div
         className="card-head"
         style={{
-          backgroundColor: "#cfe2ff",
+          backgroundColor: colorHeader,
+          color: "#fff",
           width: "100%",
           textAlign: "center",
           padding: "10px 0 0 0",

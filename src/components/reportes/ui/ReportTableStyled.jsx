@@ -72,10 +72,11 @@ function ReportTable({ informe }) {
             id="ECYD"
             title="Secciones de ECYD"
             widthPorcentage="48%"
+            colorHeader="#fa1f17b3"
             contents={[
               {
                 tittle: "Alianza con Cristo",
-                color: "#08dd48",
+                color: "#fa1f17b3",
                 content: [
                   { text: "NIÑAS:", number: ma_ef, icon: <FaFemale /> },
                   { text: "NIÑOS:", number: ma_em, icon: <FaMale /> },
@@ -83,7 +84,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Sin Alianza con Cristo",
-                color: "#4c7cff",
+                color: "#fa1f17b3",
                 content: [
                   { text: "NIÑAS:", number: mna_ef, icon: <FaFemale /> },
                   { text: "NIÑOS:", number: mna_em, icon: <FaMale /> },
@@ -91,7 +92,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Equipos",
-                color: "#ff2163",
+                color: "#fa1f17b3",
                 icon: <FaUsers />,
                 content: [
                   { text: "NIÑAS:", number: eq_ef, icon: <FaFemale /> },
@@ -100,7 +101,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Formadores",
-                color: "#12d6a5",
+                color: "#fa1f17b3",
                 icon: <FaUserCheck />,
                 content: [
                   { text: "NIÑAS:", number: form_ef, icon: <FaFemale /> },
@@ -113,10 +114,11 @@ function ReportTable({ informe }) {
             id="Jóvenes"
             title="Secciones de Jóvenes"
             widthPorcentage="48%"
+            colorHeader="#0d6de4b3"
             contents={[
               {
                 tittle: "Miembros Asociados",
-                color: "#08dd48",
+                color: "#0d6de4b3",
                 content: [
                   { text: "MUJERES:", number: ma_jf, icon: <FaFemale /> },
                   { text: "HOMBRES:", number: ma_jm, icon: <FaMale /> },
@@ -124,7 +126,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Miembros No Asociados",
-                color: "#4c7cff",
+                color: "#0d6de4b3",
                 content: [
                   { text: "MUJERES:", number: mna_jf, icon: <FaFemale /> },
                   { text: "HOMBRES:", number: mna_jm, icon: <FaMale /> },
@@ -132,7 +134,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Equipos",
-                color: "#ff2163",
+                color: "#0d6de4b3",
                 icon: <FaUsers />,
                 content: [
                   { text: "MUJERES:", number: eq_jf, icon: <FaFemale /> },
@@ -141,7 +143,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Formadores",
-                color: "#12d6a5",
+                color: "#0d6de4b3",
                 icon: <FaUserCheck />,
                 content: [
                   { text: "MUJERES:", number: form_jf, icon: <FaFemale /> },
@@ -150,15 +152,15 @@ function ReportTable({ informe }) {
               },
             ]}
           />
-          <div style={{ width: "10%" }}></div>
           <ElementReportTable
             id="Adultos"
             title="Secciones de Adultos"
-            widthPorcentage="48%"
+            widthPorcentage="85%"
+            colorHeader="#00b41eb3"
             contents={[
               {
                 tittle: "Miembros Asociados",
-                color: "#08dd48",
+                color: "#00b41eb3",
                 content: [
                   { text: "MUJERES:", number: ma_af, icon: <FaFemale /> },
                   { text: "HOMBRES:", number: ma_am, icon: <FaMale /> },
@@ -166,7 +168,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Miembros No Asociados",
-                color: "#4c7cff",
+                color: "#00b41eb3",
                 content: [
                   { text: "MUJERES:", number: mna_af, icon: <FaFemale /> },
                   { text: "HOMBRES:", number: mna_am, icon: <FaMale /> },
@@ -174,7 +176,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Equipos",
-                color: "#ff2163",
+                color: "#00b41eb3",
                 icon: <FaUsers />,
                 content: [
                   { text: "MUJERES:", number: eq_af, icon: <FaFemale /> },
@@ -183,24 +185,42 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Formadores",
-                color: "#12d6a5",
+                color: "#00b41eb3",
                 icon: <FaUserCheck />,
                 content: [
                   { text: "MUJERES:", number: form_af, icon: <FaFemale /> },
                   { text: "HOMBRES:", number: form_am, icon: <FaMale /> },
                 ],
               },
+              {
+                tittle: "Equipos de Matrimonios",
+                color: "#00b41eb3",
+                icon: <FaUserFriends />,
+                content: [
+                  { text: "MUJERES:", number: eqm_f, icon: <FaFemale /> },
+                  { text: "HOMBRES:", number: eqm_m, icon: <FaMale /> },
+                ],
+              },
+              {
+                tittle: "Sacerdotes Diocesanos",
+                color: "#00b41eb3",
+                icon: <FaChurch />,
+                content: [
+                  { text: "Sacerdotes:", number: sac_dic, icon: <FaMale /> },
+                ],
+              },
             ]}
           />
-          <div style={{ width: "10%" }}></div>
+          <hr id="hr" />
           <ElementReportTable
             id="Pasos"
             title="Pasos"
-            widthPorcentage="35%"
+            widthPorcentage="30%"
+            colorHeader="#15365fb3"
             contents={[
               {
                 tittle: "ECYD a Jóvenes",
-                color: "#8727f5",
+                color: "#fa1f17b3",
                 icon: <FaWalking />,
                 content: [
                   { text: "MUJERES:", number: paso_ef, icon: <FaFemale /> },
@@ -209,7 +229,7 @@ function ReportTable({ informe }) {
               },
               {
                 tittle: "Jóvenes a Adultos",
-                color: "#17c9d6",
+                color: "#0d6de4b3",
                 icon: <FaWalking />,
                 content: [
                   { text: "MUJERES:", number: paso_jf, icon: <FaFemale /> },
@@ -221,7 +241,8 @@ function ReportTable({ informe }) {
           <ElementReportTable
             id="Entregas1"
             title="Candidatos a Entregas"
-            widthPorcentage="35%"
+            widthPorcentage="32%"
+            colorHeader="#15365fb3"
             contents={[
               {
                 tittle: "Posibles Colaboradores",
@@ -246,7 +267,8 @@ function ReportTable({ informe }) {
           <ElementReportTable
             id="Entregas2"
             title="Entregas"
-            widthPorcentage="65%"
+            widthPorcentage="30%"
+            colorHeader="#15365fb3"
             contents={[
               {
                 tittle: "Promesas de Entrega",
@@ -264,23 +286,6 @@ function ReportTable({ informe }) {
                 content: [
                   { text: "MUJERES:", number: mis_f, icon: <FaFemale /> },
                   { text: "HOMBRES:", number: mis_m, icon: <FaMale /> },
-                ],
-              },
-              {
-                tittle: "Equipos de Matrimonios",
-                color: "#ff2163",
-                icon: <FaUserFriends />,
-                content: [
-                  { text: "MUJERES:", number: eqm_f, icon: <FaFemale /> },
-                  { text: "HOMBRES:", number: eqm_m, icon: <FaMale /> },
-                ],
-              },
-              {
-                tittle: "Sacerdotes Diocesanos",
-                color: "#1ef1ce",
-                icon: <FaChurch />,
-                content: [
-                  { text: "Sacerdotes:", number: sac_dic, icon: <FaMale /> },
                 ],
               },
             ]}
