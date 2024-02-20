@@ -29,3 +29,7 @@ tbody tr td {
   position: fixed;
   z-index: 1;
 }
+
+body {
+  white-space: pre-line;
+}

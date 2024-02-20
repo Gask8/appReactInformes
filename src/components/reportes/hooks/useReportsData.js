@@ -4,9 +4,9 @@ import { getLocalityReports } from "../../../services/apiReportes";
 export function useReportsData(searchLocality, setInformes, setIsLoading) {
   useEffect(() => {
     async function fetchData() {
-      // if (searchLocality === "") {
-      //   return;
-      // }
+      if (searchLocality === "") {
+        return;
+      }
       try {
         setIsLoading(true);
         const res = getLocalityReports(searchLocality);

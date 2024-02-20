@@ -8,6 +8,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Home from "./components/Home";
 import Error from "./components/Error";
 import { Toaster } from "react-hot-toast";
+import LinkList from "./ui/LinkList";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
             <Route path="analisis/:idLocalidad" element={<Reporte />} />
 
             <Route path="territorio" element={<Territorial />} />
+
+            <Route path="links" element={<LinkList />} />
           </Route>
 
           <Route path="*" element={<Error />} />

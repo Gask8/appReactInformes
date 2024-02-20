@@ -58,6 +58,19 @@ export async function getGeneralInfo() {
   return data;
 }
 
+export async function getAllReports() {
+  const { data, error } = await supabase
+    .from("General_Report")
+    .select("*, Batch(*)");
+
+  if (error) {
+    console.error(error);
+    throw new Error("No se pudo cargar la informacion");
+  }
+
+  return data;
+}
+
 export async function createManyReports(newInforms) {
   const { data, error } = await supabase
     .from("General_Report")

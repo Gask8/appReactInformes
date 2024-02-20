@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getGeneralInfo } from "../../services/apiReportes";
+import { getAllReports } from "../../services/apiReportes";
 import styled from "styled-components";
-// import LocalitySelector from "../../ui/LocalitySelector";
+import TrimestralSelector from "../../ui/TrimestralSelector";
 
 import { Loader } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
@@ -12,7 +12,9 @@ import ManoAmigaTable from "./ui/ManoAmigaTable";
 import AnalisisTable from "./ui/AnalisisTable";
 import ReportStadistics from "../reportes/ui/ReportStadistics";
 import ReportGeneralGraphs from "./ui/ReportGeneralGraphs";
-import ReportTable from "../reportes/ui/ReportTable";
+import ReportTable from "../reportes/ui/ReportTableStyled";
+import { reportsReducer } from "../../utils/reportsReducer";
+import { dataTrimestral } from "../../utils/dataTrimestral";
 
 const ReportTemplate = styled.div`
   background-color: #f4f4f4;
@@ -26,16 +28,17 @@ const Container = styled.div`
 function Territorial() {
   const [informes, setInformes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true);
 
-        const res = getGeneralInfo();
+        const res = getAllReports();
         res.then(
           function (data) {
-            setInformes(data);
+            setInformes(reportsReducer(data));
             setIsLoading(false);
           },
           function (error) {
@@ -57,21 +60,23 @@ function Territorial() {
       <div className="card m-4">
         <div className="card-header n-print">
           <div className="d-flex justify-content-center">
-            {/* <LocalitySelector
-              options={["General", ...secciones]}
-              setValue={setSeccion}
-              value={seccion}
-            /> */}
+            <TrimestralSelector
+              options={dataTrimestral}
+              setValue={setCurrentIndex}
+              value={currentIndex}
+            />
           </div>
         </div>
 
         <div className="card-body">
           <ReportTemplate>
-            <ReportInfo informe={informes[0]} />
+            <ReportInfo informe={informes[currentIndex]} />
 
             <Container>
               <h4>Información General de la Tanda</h4>
-              <ReportTable informe={{ ...informes[0], sec_resp: "todo" }} />
+              <ReportTable
+                informe={{ ...informes[currentIndex], sec_resp: "todo" }}
+              />
             </Container>
 
             <Container>
@@ -91,12 +96,12 @@ function Territorial() {
 
             <Container>
               <h4>Mano Amiga</h4>
-              <ManoAmigaTable id_batch={informes[0].id_batch} />
+              <ManoAmigaTable id_batch={informes[currentIndex].id_batch} />
             </Container>
 
             <Container>
               <h4>Analisis de las Localidades</h4>
-              <AnalisisTable id_batch={informes[0].id_batch} />
+              <AnalisisTable id_batch={informes[currentIndex].id_batch} />
             </Container>
           </ReportTemplate>
         </div>

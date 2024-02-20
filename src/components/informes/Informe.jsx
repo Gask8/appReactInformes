@@ -229,7 +229,7 @@ function TableCuanl({ informe }) {
             desarrollando cada elemento (mencionar aciertos, logros, retos,
             dificultades).
           </td>
-          <td>{vida_de_seccion}</td>
+          <td>{vida_de_seccion.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">13</th>
@@ -238,7 +238,7 @@ function TableCuanl({ informe }) {
             responsables y mesa directiva; enReino: formadores en general)
             (mencionar aciertos, logros, retos, dificultades).
           </td>
-          <td>{formacion_formadores}</td>
+          <td>{formacion_formadores.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">14</th>
@@ -248,7 +248,7 @@ function TableCuanl({ informe }) {
             acompañamiento y oración por las vocaciones) de acuerdo con lo
             estipuladoen el #48 de los EFRC.
           </td>
-          <td>{pastoral_vocacional}</td>
+          <td>{pastoral_vocacional.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">15</th>
@@ -256,7 +256,7 @@ function TableCuanl({ informe }) {
             Describa la situación y avances del campo "formar apóstoles jóvenes
             para jóvenes".
           </td>
-          <td>{apostoles_jovenes}</td>
+          <td>{apostoles_jovenes.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">16</th>
@@ -264,7 +264,7 @@ function TableCuanl({ informe }) {
             Describa la situación y avances del campo "formar matrimonios
             apóstoles para sus hijos".
           </td>
-          <td>{matrimonios_apostoles}</td>
+          <td>{matrimonios_apostoles.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">17</th>
@@ -272,7 +272,7 @@ function TableCuanl({ informe }) {
             Describa la situación y avances del campo "trabajo a favor de la
             vida y la familia".
           </td>
-          <td>{afavor_de_la_vida}</td>
+          <td>{afavor_de_la_vida.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">18</th>
@@ -280,7 +280,7 @@ function TableCuanl({ informe }) {
             ¿Qué otro campo prioritario crees que sea necesario abarcar en tu
             sección?
           </td>
-          <td>{otro_campo_prioritario}</td>
+          <td>{otro_campo_prioritario.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">19</th>
@@ -289,12 +289,12 @@ function TableCuanl({ informe }) {
             trimestre? ¿Qué próximos proyectos tienen en puerta? O les gustaría
             desarrollar.
           </td>
-          <td>{acciones_y_metas}</td>
+          <td>{acciones_y_metas.replaceAll(/\|/g, "\n")}</td>
         </tr>
         <tr>
           <th scope="row">20</th>
           <td>Comentarios, dudas y sugerencias</td>
-          <td>{comentarios}</td>
+          <td>{comentarios.replaceAll(/\|/g, "\n")}</td>
         </tr>
       </tbody>
     </table>

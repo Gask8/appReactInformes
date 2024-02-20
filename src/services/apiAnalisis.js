@@ -8,8 +8,6 @@ export async function getAnalisis(id_report) {
     .limit(1)
     .single();
 
-  console.log(data, error);
-
   if (error) {
     console.error(error);
     if (error.code === "PGRST116") {
