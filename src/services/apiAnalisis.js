@@ -15,6 +15,10 @@ export async function getAnalisis(id_report) {
         id_report: id_report,
         analisis: "",
         accion: "",
+        analisis_a: "",
+        accion_a: "",
+        analisis_e: "",
+        accion_e: "",
       });
       console.log("creando analisis");
       return data2[0];

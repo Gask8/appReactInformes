@@ -23,26 +23,6 @@ const Main = styled.main`
 function AppLayout() {
   return (
     <StyledAppLayout>
-      {/* <Header className="n-print">
-        <button
-          className="btn btn-outline-secondary btn-sm"
-          onClick={() => setMenu(0)}
-        >
-          Procesar
-        </button>
-        <button
-          className="btn btn-outline-secondary btn-sm"
-          onClick={() => setMenu(1)}
-        >
-          Ver Todo
-        </button>
-        <button
-          className="btn btn-outline-secondary btn-sm"
-          onClick={() => setMenu(2)}
-        >
-          Por Localidad
-        </button>
-      </Header> */}
       <Main>
         <Outlet />
       </Main>

@@ -38,13 +38,13 @@ function ElementReportTable({
       <FlexDiv className="card-body">
         {contents.map((x, i) => (
           <div key={i} className="d-flex flex-column align-items-center">
-            <p style={{ fontSize: "0.95rem", color: x.color }}>
+            <p style={{ fontSize: "0.8rem", color: x.color }}>
               <b>
                 {x.tittle} {x.icon}
               </b>
             </p>
             {x.content.map((e, i) => (
-              <p key={i}>
+              <p key={i} style={{ fontSize: "0.75rem" }}>
                 {e.text} {e.number} {e.icon}
                 {e.number > 0 ? "" : <span className="text-danger">! </span>}
               </p>
