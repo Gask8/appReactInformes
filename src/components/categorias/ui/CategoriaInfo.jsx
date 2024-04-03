@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getHowManyInforms } from "../../../services/apiInformes";
 
-function ReportInfo({ informe }) {
+function CategoriaInfo({ informe }) {
   const {
     id_batch,
     Batch: { trimestre, fecha },
@@ -52,22 +52,22 @@ function ReportInfo({ informe }) {
   return (
     <>
       <div className="card-title">
-        <h1 className="text-center">Reporte General</h1>
+        <h1 className="text-center">Reporte General Adultos Femenino</h1>
         <h4 className="text-center">{`${fecha} / ${trimestre}`}</h4>
         <p>Secciones que contestaron el informe:</p>
-        <p className="d-flex justify-content-center gap-3">
+        {/* <p className="d-flex justify-content-center gap-3">
           {`Total: ${allSeccions.length}/161`}
-        </p>
+        </p> */}
         <p className="d-flex justify-content-center gap-3">
-          {`ECYD Femenino: ${howManySeccions["ECYD Femenino"]}/25 - `}
+          {/* {`ECYD Femenino: ${howManySeccions["ECYD Femenino"]}/25 - `}
           {`ECYD Masculino: ${howManySeccions["ECYD Masculino"]}/20 - `}
           {`Jóvenes Femenino: ${howManySeccions["Jóvenes Femenino"]}/29 - `}
-          {`Jóvenes Masculino: ${howManySeccions["Jóvenes Masculino"]}/30 - `}
-          {`Adultos Femenino: ${howManySeccions["Adultos Femenino"]}/28 - `}
-          {`Adultos Masculino: ${howManySeccions["Adultos Masculino"]}/30`}
+          {`Jóvenes Masculino: ${howManySeccions["Jóvenes Masculino"]}/30 - `} */}
+          {`Adultos Femenino: ${howManySeccions["Adultos Femenino"]}/28 `}
+          {/* {`Adultos Masculino: ${howManySeccions["Adultos Masculino"]}/30`} */}
         </p>
         <pre className="my-3" style={{ textAlign: "end" }}>
-          {`*El Informe muestra únicamente la información que fue
+          {`*El Reporte muestra únicamente la información que fue
 adquirida por las secciones que contestaron. Si los números
 no reflejan la realidad, el motivo es la falta de informe.`}
         </pre>
@@ -76,4 +76,4 @@ no reflejan la realidad, el motivo es la falta de informe.`}
   );
 }
 
-export default ReportInfo;
+export default CategoriaInfo;

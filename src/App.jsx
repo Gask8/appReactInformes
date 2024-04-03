@@ -4,6 +4,7 @@ import AppLayout from "./ui/AppLayout";
 import Procesador from "./components/procesador/Procesador";
 import Reporte from "./components/reportes/Reporte";
 import Territorial from "./components/territorial/Territorial";
+import Categoria from "./components/categorias/Categoria";
 import GlobalStyles from "./styles/GlobalStyles";
 import Home from "./components/Home";
 import Error from "./components/Error";
@@ -23,7 +24,9 @@ function App() {
             <Route path="analisis" element={<Navigate replace to="/" />} />
             <Route path="analisis/:idLocalidad" element={<Reporte />} />
 
-            <Route path="territorio" element={<Territorial />} />
+            <Route path="Territorio" element={<Territorial />} />
+
+            <Route path="categorias/:idCategoria" element={<Categoria />} />
 
             <Route path="links" element={<LinkList />} />
           </Route>

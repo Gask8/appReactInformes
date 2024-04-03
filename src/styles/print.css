@@ -16,4 +16,10 @@
   #canvasChart {
     width: 350px !important;
   }
+  main {
+    padding: 0rem !important;
+  }
+  div .m-4 {
+    margin: 0 !important;
+  }
 }

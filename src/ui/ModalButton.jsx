@@ -5,7 +5,7 @@ function ModalButton({ onClick }) {
     <button
       id="btn-edit"
       type="button"
-      className="btn btn-warning"
+      className="btn btn-warning n-print "
       data-bs-toggle="modal"
       data-bs-target="#AnswerModal"
     >
