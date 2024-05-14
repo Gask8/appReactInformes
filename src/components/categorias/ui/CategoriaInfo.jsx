@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getHowManyInforms } from "../../../services/apiInformes";
+import { traductorAbrebiaciones } from "../../../utils/dataArray";
 
-function CategoriaInfo({ informe }) {
+function CategoriaInfo({ informe, categoria }) {
   const {
     id_batch,
     Batch: { trimestre, fecha },
@@ -52,7 +53,9 @@ function CategoriaInfo({ informe }) {
   return (
     <>
       <div className="card-title">
-        <h1 className="text-center">Reporte General Adultos Femenino</h1>
+        <h1 className="text-center">
+          Reporte General {traductorAbrebiaciones[categoria]}
+        </h1>
         <h4 className="text-center">{`${fecha} / ${trimestre}`}</h4>
         <p>Secciones que contestaron el informe:</p>
         {/* <p className="d-flex justify-content-center gap-3">
@@ -63,7 +66,9 @@ function CategoriaInfo({ informe }) {
           {`ECYD Masculino: ${howManySeccions["ECYD Masculino"]}/20 - `}
           {`Jóvenes Femenino: ${howManySeccions["Jóvenes Femenino"]}/29 - `}
           {`Jóvenes Masculino: ${howManySeccions["Jóvenes Masculino"]}/30 - `} */}
-          {`Adultos Femenino: ${howManySeccions["Adultos Femenino"]}/28 `}
+          {`${traductorAbrebiaciones[categoria]}: ${
+            howManySeccions[traductorAbrebiaciones[categoria]]
+          }/28 `}
           {/* {`Adultos Masculino: ${howManySeccions["Adultos Masculino"]}/30`} */}
         </p>
         <pre className="my-3" style={{ textAlign: "end" }}>

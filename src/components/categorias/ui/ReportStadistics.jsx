@@ -21,28 +21,29 @@ const Hr = styled.hr`
   border-top: 2px solid #000000;
 `;
 
-function ReportStadistics({ informes }) {
+function ReportStadistics({ informes, categoria }) {
   const {
     Batch: { trimestre },
   } = informes[0];
   const estadisticasPorAno = informes
     .filter((informe) => informe.Batch.trimestre === trimestre)
+    .slice(0, 4)
     .reverse();
 
   return (
     <DivG>
       {estadisticasPorAno.map((i, ind) => (
-        <ElementStafistics key={ind} i={i} />
+        <ElementStafistics key={ind} i={i} cat={categoria} />
       ))}
     </DivG>
   );
 }
 
-function ElementStafistics({ i }) {
-  const ma = i.ma_af;
-  const tm = ma + i.mna_af;
-  const form = i.form_af;
-  const eq = i.eq_af;
+function ElementStafistics({ i, cat }) {
+  const ma = i[`ma_${cat}`];
+  const tm = ma + i[`mna_${cat}`];
+  const form = i[`form_${cat}`];
+  const eq = i[`eq_${cat}`];
 
   return (
     <DivF>

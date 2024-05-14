@@ -16,7 +16,8 @@ import { dataTrimestral } from "../../utils/dataTrimestral";
 import Accordion from "../../ui/Accordion.jsx";
 
 import Informe from "./ui/Informes";
-import { localidades } from "../../utils/dataArray.js";
+import { useParams } from "react-router-dom";
+import { traductorAbrebiaciones } from "../../utils/dataArray.js";
 
 const ReportTemplate = styled.div`
   background-color: #f4f4f4;
@@ -28,7 +29,10 @@ const Container = styled.div`
 `;
 
 function Categoria() {
+  const { idCategoria } = useParams();
+
   const [informes, setInformes] = useState([]);
+  const [sec, setSec] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,6 +44,7 @@ function Categoria() {
         const res = getAllReports();
         res.then(
           function (data) {
+            setSec(data);
             setInformes(reportsReducer(data));
             setIsLoading(false);
           },
@@ -57,7 +62,11 @@ function Categoria() {
   if (isLoading | (informes.length < 1))
     return <Loader size="md" center={true} content="Cargando" />;
 
-  console.log(informes[0]);
+  const idBatch = informes[0].id;
+  const localList = sec
+    .filter((i) => i.id_batch === idBatch)
+    .filter((i) => i.sec_resp.includes(idCategoria))
+    .map((i) => i.localidad);
 
   return (
     <>
@@ -74,18 +83,22 @@ function Categoria() {
 
         <div className="card-body">
           <ReportTemplate>
-            <CategoriaInfo informe={informes[currentIndex]} />
+            <CategoriaInfo
+              informe={informes[currentIndex]}
+              categoria={idCategoria}
+            />
 
             <Container>
               <h4>Información General de la Tanda</h4>
               <ReportTable
                 informe={{ ...informes[currentIndex], sec_resp: "todo" }}
+                categoria={idCategoria}
               />
             </Container>
 
             <Container>
               <h4>Estadísticas comparativas entre años, mismo trimestre.</h4>
-              <ReportStadistics informes={informes} />
+              <ReportStadistics informes={informes} categoria={idCategoria} />
             </Container>
 
             <Container>
@@ -96,14 +109,14 @@ function Categoria() {
             <Container>
               <h4>Informes</h4>
               <Accordion id="accordion-informes">
-                {localidades.map((localidad, i) => (
-                  <Accordion.Item key={i} idName={localidad}>
+                {localList.map((localidad, i) => (
+                  <Accordion.Item key={i} idName={localidad.replace(" ", "")}>
                     <Accordion.Header>{localidad}</Accordion.Header>
                     <Accordion.Content>
                       <Informe
                         options={{
-                          id: 29,
-                          seccion: "Adultos Femenino",
+                          id: idBatch,
+                          seccion: traductorAbrebiaciones[idCategoria],
                           localidad: localidad,
                         }}
                       />
@@ -112,11 +125,6 @@ function Categoria() {
                 ))}
               </Accordion>
             </Container>
-
-            {/* <Container>
-              <h4>Gráficas Historicas</h4>
-              <ReportGraphs informes={informes} />
-            </Container> */}
           </ReportTemplate>
         </div>
       </div>

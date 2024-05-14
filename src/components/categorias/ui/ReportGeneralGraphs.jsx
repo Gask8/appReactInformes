@@ -10,12 +10,12 @@ import {
   Legend,
 } from "chart.js";
 
-import { Pie } from "react-chartjs-2";
+// import { Pie } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 import { Loader } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import { getLastReports } from "../../../services/apiReportes";
-import { nombreSecciones } from "../../../utils/dataArray";
+// import { nombreSecciones } from "../../../utils/dataArray";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import Accordion from "../../../ui/Accordion";
 

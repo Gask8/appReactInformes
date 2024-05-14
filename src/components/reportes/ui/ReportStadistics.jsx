@@ -27,6 +27,7 @@ function ReportStadistics({ informes }) {
   } = informes[0];
   const estadisticasPorAno = informes
     .filter((informe) => informe.Batch.trimestre === trimestre)
+    .slice(0, 4)
     .reverse();
 
   return (

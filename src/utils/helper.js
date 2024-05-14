@@ -47,9 +47,9 @@ export function processInfo(data) {
 
       arrLocalidad.forEach(function (element) {
         obj[element[1]] = element.slice(2, 14);
-        if (element[14] === 1) {
-          respSec += `${traductor[element[1]]},`;
-        }
+        respSec += `${traductor[element[1]]},`;
+        // if (element[14] === 1) {
+        // }
       });
 
       let respuesta = [
