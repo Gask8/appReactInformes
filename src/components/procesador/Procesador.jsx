@@ -26,12 +26,12 @@ function Procesador() {
         let lines = text.split("\n");
         let fileData = [];
         for (let i = 1; i < lines.length; i++) {
-          fileData.push(lines[i].split("\t"));
+          fileData.push(lines[i].split(","));
         }
         setFileData(fileData);
 
         const data = fileData.reduce((acc, curr) => {
-          acc += curr.slice(0, 14).join("\t") + "\n";
+          acc += curr.slice(0, 14).join(",") + "\n";
           return acc;
         }, "");
         setData(data);

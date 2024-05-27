@@ -8,7 +8,7 @@ export function processInfo(data) {
     let arrInfo = [];
     const iterator = data.split("\n");
     for (let i = 0; i < iterator.length; i++) {
-      let row = iterator[i].split("\t");
+      let row = iterator[i].split(",");
       let element = [
         row[1],
         row[0],
